@@ -22,7 +22,7 @@
             line-height: 1.6;
         }
         .container {
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto;
         }
         h1 {
@@ -50,7 +50,7 @@
         }
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
             gap: 12px;
         }
         .item {
@@ -59,29 +59,41 @@
             border-radius: 12px;
             padding: 15px 10px;
             text-align: center;
-            cursor: pointer;
             transition: all 0.2s ease;
-            font-size: 1.2rem;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 60px;
-            user-select: none;
-        }
-        .item:hover {
-            background: var(--hover-bg);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-        }
-        .item:active {
-            transform: translateY(0);
+            min-height: 70px;
         }
         .item-desc {
             font-size: 0.75rem;
             color: var(--accent-color);
-            margin-top: 8px;
+            margin-bottom: 8px;
         }
+        .emoji-row {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+            align-items: center;
+        }
+        .emoji-btn {
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            padding: 4px 6px;
+            border-radius: 8px;
+            transition: background 0.15s ease, transform 0.1s ease;
+        }
+        .emoji-btn:hover {
+            background: var(--hover-bg);
+            transform: scale(1.15);
+        }
+        .emoji-btn:active {
+            transform: scale(0.95);
+        }
+        /* 단일 이모지용 그리드 */
         .grid-small {
             grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
         }
@@ -89,13 +101,20 @@
             font-size: 1.5rem;
             padding: 10px;
             min-height: 40px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .item-small:hover {
+            background: var(--hover-bg);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         }
         #toast {
             position: fixed;
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.85);
             color: white;
             padding: 12px 24px;
             border-radius: 30px;
@@ -110,48 +129,165 @@
 <body>
     <div class="container">
         <h1>에겐 무드 텍스트 대치</h1>
-        <p class="desc">클릭하면 클립보드에 바로 복사됩니다 ೀ</p>
+        <p class="desc">이모지를 하나씩 클릭하거나 조합을 통째로 복사해 보세요 ೀ</p>
 
+        <!-- 1. 몽글몽글·퓨어 무드 -->
         <div class="section">
             <h2>☁️ 몽글몽글·퓨어 무드</h2>
             <div class="grid">
-                <div class="item" onclick="copyText('🦢🤍🫧')">🦢🤍🫧<span class="item-desc">깨끗·맑음</span></div>
-                <div class="item" onclick="copyText('🧊🪽🎧')">🧊🪽🎧<span class="item-desc">실버·투명</span></div>
-                <div class="item" onclick="copyText('🥛🥥🕊️')">🥛🥥🕊️<span class="item-desc">포근·부드러움</span></div>
-                <div class="item" onclick="copyText('🩰🪞🕯️')">🩰🪞🕯️<span class="item-desc">은은한 방</span></div>
+                <div class="item">
+                    <span class="item-desc">깨끗·맑음</span>
+                    <div class="emoji-row">
+                        <button class="emoji-btn" onclick="copyText('🦢')" title="복사">🦢</button>
+                        <button class="emoji-btn" onclick="copyText('🤍')" title="복사">🤍</button>
+                        <button class="emoji-btn" onclick="copyText('🫧')" title="복사">🫧</button>
+                    </div>
+                </div>
+                <div class="item">
+                    <span class="item-desc">실버·투명</span>
+                    <div class="emoji-row">
+                        <button class="emoji-btn" onclick="copyText('🧊')" title="복사">🧊</button>
+                        <button class="emoji-btn" onclick="copyText('🪽')" title="복사">🪽</button>
+                        <button class="emoji-btn" onclick="copyText('🎧')" title="복사">🎧</button>
+                    </div>
+                </div>
+                <div class="item">
+                    <span class="item-desc">포근·부드러움</span>
+                    <div class="emoji-row">
+                        <button class="emoji-btn" onclick="copyText('🥛')" title="복사">🥛</button>
+                        <button class="emoji-btn" onclick="copyText('🥥')" title="복사">🥥</button>
+                        <button class="emoji-btn" onclick="copyText('🕊️')" title="복사">🕊️</button>
+                    </div>
+                </div>
+                <div class="item">
+                    <span class="item-desc">은은한 방</span>
+                    <div class="emoji-row">
+                        <button class="emoji-btn" onclick="copyText('🩰')" title="복사">🩰</button>
+                        <button class="emoji-btn" onclick="copyText('🪞')" title="복사">🪞</button>
+                        <button class="emoji-btn" onclick="copyText('🕯️')" title="복사">🕯️</button>
+                    </div>
+                </div>
             </div>
         </div>
 
+        <!-- 2. Y2K·레트로 힙 -->
         <div class="section">
             <h2>💿 Y2K·레트로 힙</h2>
             <div class="grid">
-                <div class="item" onclick="copyText('💿🎧🦋')">💿🎧🦋<span class="item-desc">청량 2000s</span></div>
-                <div class="item" onclick="copyText('🎱🖤👾')">🎱🖤👾<span class="item-desc">키치·힙</span></div>
-                <div class="item" onclick="copyText('📼🪩📸')">📼🪩📸<span class="item-desc">필카 기록</span></div>
-                <div class="item" onclick="copyText('🛹🧢🎧')">🛹🧢🎧<span class="item-desc">스포티 룩</span></div>
+                <div class="item">
+                    <span class="item-desc">청량 2000s</span>
+                    <div class="emoji-row">
+                        <button class="emoji-btn" onclick="copyText('💿')" title="복사">💿</button>
+                        <button class="emoji-btn" onclick="copyText('🎧')" title="복사">🎧</button>
+                        <button class="emoji-btn" onclick="copyText('🦋')" title="복사">🦋</button>
+                    </div>
+                </div>
+                <div class="item">
+                    <span class="item-desc">키치·힙</span>
+                    <div class="emoji-row">
+                        <button class="emoji-btn" onclick="copyText('🎱')" title="복사">🎱</button>
+                        <button class="emoji-btn" onclick="copyText('🖤')" title="복사">🖤</button>
+                        <button class="emoji-btn" onclick="copyText('👾')" title="복사">👾</button>
+                    </div>
+                </div>
+                <div class="item">
+                    <span class="item-desc">필카 기록</span>
+                    <div class="emoji-row">
+                        <button class="emoji-btn" onclick="copyText('📼')" title="복사">📼</button>
+                        <button class="emoji-btn" onclick="copyText('🪩')" title="복사">🪩</button>
+                        <button class="emoji-btn" onclick="copyText('📸')" title="복사">📸</button>
+                    </div>
+                </div>
+                <div class="item">
+                    <span class="item-desc">스포티 룩</span>
+                    <div class="emoji-row">
+                        <button class="emoji-btn" onclick="copyText('🛹')" title="복사">🛹</button>
+                        <button class="emoji-btn" onclick="copyText('🧢')" title="복사">🧢</button>
+                        <button class="emoji-btn" onclick="copyText('🎧')" title="복사">🎧</button>
+                    </div>
+                </div>
             </div>
         </div>
 
+        <!-- 3. 빈티지·코지 무드 -->
         <div class="section">
             <h2>🧸 빈티지·코지 무드</h2>
             <div class="grid">
-                <div class="item" onclick="copyText('🎞️🎧🤎')">🎞️🎧🤎<span class="item-desc">아날로그</span></div>
-                <div class="item" onclick="copyText('🧸🕰️🪵')">🧸🕰️🪵<span class="item-desc">따뜻한 방</span></div>
-                <div class="item" onclick="copyText('📻☕️📖')">📻☕️📖<span class="item-desc">커피·독서</span></div>
-                <div class="item" onclick="copyText('🥖🧺🍂')">🥖🧺🍂<span class="item-desc">가을 피크닉</span></div>
+                <div class="item">
+                    <span class="item-desc">아날로그</span>
+                    <div class="emoji-row">
+                        <button class="emoji-btn" onclick="copyText('🎞️️')" title="복사">🎞️</button>
+                        <button class="emoji-btn" onclick="copyText('🎧')" title="복사">🎧</button>
+                        <button class="emoji-btn" onclick="copyText('🤎')" title="복사">🤎</button>
+                    </div>
+                </div>
+                <div class="item">
+                    <span class="item-desc">따뜻한 방</span>
+                    <div class="emoji-row">
+                        <button class="emoji-btn" onclick="copyText('🧸')" title="복사">🧸</button>
+                        <button class="emoji-btn" onclick="copyText('🕰️')" title="복사">🕰️</button>
+                        <button class="emoji-btn" onclick="copyText('🪵')" title="복사">🪵</button>
+                    </div>
+                </div>
+                <div class="item">
+                    <span class="item-desc">커피·독서</span>
+                    <div class="emoji-row">
+                        <button class="emoji-btn" onclick="copyText('📻')" title="복사">📻</button>
+                        <button class="emoji-btn" onclick="copyText('☕️')" title="복사">☕️</button>
+                        <button class="emoji-btn" onclick="copyText('📖')" title="복사">📖</button>
+                    </div>
+                </div>
+                <div class="item">
+                    <span class="item-desc">가을 피크닉</span>
+                    <div class="emoji-row">
+                        <button class="emoji-btn" onclick="copyText('🥖')" title="복사">🥖</button>
+                        <button class="emoji-btn" onclick="copyText('🧺')" title="복사">🧺</button>
+                        <button class="emoji-btn" onclick="copyText('🍂')" title="복사">🍂</button>
+                    </div>
+                </div>
             </div>
         </div>
 
+        <!-- 4. 청량·그리너리 무드 -->
         <div class="section">
             <h2>🌿 청량·그리너리 무드</h2>
             <div class="grid">
-                <div class="item" onclick="copyText('🌿🍵🍀')">🌿🍵🍀<span class="item-desc">풀내음</span></div>
-                <div class="item" onclick="copyText('🍏🌱🎧')">🍏🌱🎧<span class="item-desc">싱그러운 산책</span></div>
-                <div class="item" onclick="copyText('🍃☀🚲')">🍃☀🚲<span class="item-desc">자전거 오후</span></div>
-                <div class="item" onclick="copyText('🍀🫧💚')">🍀🫧💚<span class="item-desc">행운 가득</span></div>
+                <div class="item">
+                    <span class="item-desc">풀내음</span>
+                    <div class="emoji-row">
+                        <button class="emoji-btn" onclick="copyText('🌿')" title="복사">🌿</button>
+                        <button class="emoji-btn" onclick="copyText('🍵')" title="복사">🍵</button>
+                        <button class="emoji-btn" onclick="copyText('🍀')" title="복사">🍀</button>
+                    </div>
+                </div>
+                <div class="item">
+                    <span class="item-desc">싱그러운 산책</span>
+                    <div class="emoji-row">
+                        <button class="emoji-btn" onclick="copyText('🍏')" title="복사">🍏</button>
+                        <button class="emoji-btn" onclick="copyText('🌱')" title="복사">🌱</button>
+                        <button class="emoji-btn" onclick="copyText('🎧')" title="복사">🎧</button>
+                    </div>
+                </div>
+                <div class="item">
+                    <span class="item-desc">자전거 오후</span>
+                    <div class="emoji-row">
+                        <button class="emoji-btn" onclick="copyText('🍃')" title="복사">🍃</button>
+                        <button class="emoji-btn" onclick="copyText('☀')" title="복사">☀</button>
+                        <button class="emoji-btn" onclick="copyText('🚲')" title="복사">🚲</button>
+                    </div>
+                </div>
+                <div class="item">
+                    <span class="item-desc">행운 가득</span>
+                    <div class="emoji-row">
+                        <button class="emoji-btn" onclick="copyText('🍀')" title="복사">🍀</button>
+                        <button class="emoji-btn" onclick="copyText('🫧')" title="복사">🫧</button>
+                        <button class="emoji-btn" onclick="copyText('💚')" title="복사">💚</button>
+                    </div>
+                </div>
             </div>
         </div>
 
+        <!-- 5. 감성 특수문자 -->
         <div class="section">
             <h2>ೀ 감성 특수문자</h2>
             <div class="grid grid-small">
@@ -170,13 +306,26 @@
             </div>
         </div>
 
+        <!-- 6. 텍스트 조합 -->
         <div class="section">
             <h2>☁️ 텍스트 조합</h2>
-            <div class="grid">
-                <div class="item" onclick="copyText('⋆⁺₊⋆ ☾ ⋆⁺₊⋆')">⋆⁺₊⋆ ☾ ⋆⁺₊⋆</div>
-                <div class="item" onclick="copyText('🫧 ᡣ𐭩 ˚ ⊹')">🫧 ᡣ𐭩 ˚ ⊹</div>
-                <div class="item" onclick="copyText('🎧 ✧ ೃ༄')">🎧 ✧ ೃ༄</div>
-                <div class="item" onclick="copyText('☁️ ⸒⸒ ೀ')">☁️ ⸒⸒ ೀ</div>
+            <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));">
+                <div class="item" onclick="copyText('⋆⁺₊⋆ ☾ ⋆⁺₊⋆')" style="cursor: pointer; padding: 15px;">
+                    <span style="font-size: 1.1rem;">⋆⁺₊⋆ ☾ ⋆⁺₊⋆</span>
+                    <span class="item-desc" style="margin-top: 6px; margin-bottom: 0;">클릭해서 통째로 복사</span>
+                </div>
+                <div class="item" onclick="copyText('🫧 ᡣ𐭩 ˚ ⊹')" style="cursor: pointer; padding: 15px;">
+                    <span style="font-size: 1.1rem;">🫧 ᡣ𐭩 ˚ ⊹</span>
+                    <span class="item-desc" style="margin-top: 6px; margin-bottom: 0;">클릭해서 통째로 복사</span>
+                </div>
+                <div class="item" onclick="copyText('🎧 ✧ ೃ༄')" style="cursor: pointer; padding: 15px;">
+                    <span style="font-size: 1.1rem;">🎧 ✧ ೃ༄</span>
+                    <span class="item-desc" style="margin-top: 6px; margin-bottom: 0;">클릭해서 통째로 복사</span>
+                </div>
+                <div class="item" onclick="copyText('☁️ ⸒⸒ ೀ')" style="cursor: pointer; padding: 15px;">
+                    <span style="font-size: 1.1rem;">☁️ ⸒⸒ ೀ</span>
+                    <span class="item-desc" style="margin-top: 6px; margin-bottom: 0;">클릭해서 통째로 복사</span>
+                </div>
             </div>
         </div>
     </div>
@@ -187,6 +336,7 @@
         function copyText(text) {
             navigator.clipboard.writeText(text).then(() => {
                 const toast = document.getElementById('toast');
+                toast.innerText = `'${text}' 복사되었습니다! 🫧`;
                 toast.style.opacity = '1';
                 setTimeout(() => {
                     toast.style.opacity = '0';
